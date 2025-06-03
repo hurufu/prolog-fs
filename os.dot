@@ -1,0 +1,12 @@
+digraph Functional_Dependencies {
+    p1 [shape="point"]
+    path -> canonical_path [label="realpth"]
+    path -> file_fd [label="open"]
+    dir_fd -> p1 [label="openat"]
+    path -> p1 -> file_fd
+    path -> dir_stream [label="opendir"]
+    dir_stream -> good_basename [label="readdir"]
+    dir_stream -> dir_fd [label="dirfd"]
+    dir_fd -> dir_stream [label="fdopendir"]
+    good_basename -> path
+}
